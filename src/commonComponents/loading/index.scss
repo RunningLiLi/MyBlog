@@ -1,0 +1,28 @@
+#loading-container{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 50%;
+    top: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    margin: 0 auto;
+    div{
+        position: absolute;
+        width: 50%;
+        height: 50%;
+        left: 50%;
+        top: 50%;
+        transform:translateX(-50%) translateY(-50%);
+        img{
+            position: absolute;
+            width: 100%;
+        }
+        span{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 10px;
+        }
+    }
+    
+}

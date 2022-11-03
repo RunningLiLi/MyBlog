@@ -1,0 +1,79 @@
+#notes-container{
+    position: absolute;
+    width: 700px;
+    height: 600px;
+    z-index: 10;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    .notes-header{
+        position: absolute;
+        width: 100%;
+        height: 50px;     
+        .icon-bianjimoban{
+            position: absolute;
+            color: white;
+            font-size: 18px;
+            top: 16px;
+            right: 10px;
+        }  
+        .classes-sort{
+            position: absolute;
+            width: 50%;
+            height: 100%;
+            .classes{
+                position: absolute;
+                width: 80px;
+                top: 12.5px;
+                left: 25px;
+                color: white;
+                height: 25px;
+                border:none;
+                border-radius: 5px;
+                background-color: rgba(1,1,1,0.8);
+            }
+            .sort{
+                position: absolute;
+                width: 80px;
+                top: 12.5px;
+                left: 145px;
+                color: white;
+                height: 25px;
+                border:none;
+                border-radius: 5px;
+                background-color: rgba(1,1,1,0.8);
+            }
+            .icon-jiangxu{
+                position: absolute;
+                left: 120px;
+                top: 15px;
+                color: white;
+                font-size: 20px;
+            }
+            .icon-shengxu{
+                position: absolute;
+                left: 120px;
+                top: 15px;
+                color: white;
+                font-size: 20px;
+            }
+            .icon-fenlei{
+                position: absolute;
+                top: 15px;
+                color: white;
+                font-size: 20px;
+            }
+        }
+        
+    }
+    .body{
+        position: fixed;
+        top: 50px;
+        width: 100%;
+        height: 470px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scrollbar-width:none;
+    }
+    .body::-webkit-scrollbar{
+        display:none
+   }
+}

@@ -1,0 +1,186 @@
+#article-container{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-image: url('../../resource/articleBg.jpg');
+    background-size:cover;
+    background-position: center center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+    .content{
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        border: 1px solid rgba($color: #000000, $alpha: 0);
+        max-width: 1000px;
+        min-width: 600px;
+        header{
+            display: flex;
+            margin-top: 30px;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 150px;
+            color: white;
+            .title{
+                font-size: 35px;
+                letter-spacing: 2px;
+                text-align: center;
+            }
+            .author-date{
+                display: flex;
+                justify-content: space-evenly;
+                color: rgb(73, 73, 73);
+                span{
+                    margin-left: 10px;
+                    margin-right: 10px;
+                }
+            }
+            .type{
+                color: red;
+            }
+            .keys{
+                margin-top: 10px;
+                list-style: none;
+                li{
+                    display: inline-block;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    border-radius:10px ;
+                    height: 25px;
+                    padding: 0px 10px 0px 10px;
+                    border: 1px solid white;
+                    background:linear-gradient(to left,rgb(43, 192, 238),rgb(143, 60, 221));
+                }
+            }
+        }
+        .body{
+            background-color: rgba($color: #000000, $alpha: .7);
+            border-radius: 10px;
+            width: 100%;
+            line-height: 2;
+            overflow:hidden;
+            color: white;
+            box-sizing: border-box;
+            padding: 0 20px 0 20px;
+            img{
+                max-width: 100%;
+
+            }
+            ul {
+                box-sizing: border-box;
+                color: white;
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+                  Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 28px;
+                padding-left: 28px;
+                text-rendering: optimizelegibility;
+                word-break: break-word;
+              }
+              ol {
+                box-sizing: border-box;
+                color: white;
+                font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+                  Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 28px;
+                padding-left: 28px;
+                text-rendering: optimizelegibility;
+                word-break: break-word;
+              }
+              pre {
+                background-attachment: scroll;
+                border-radius: 5px;
+                background-clip: border-box;
+                background-color: rgb(17, 17, 17);
+                background-image: none;
+                background-origin: padding-box;
+                background-position-x: 0%;
+                background-position-y: 0%;
+                background-repeat: repeat;
+                background-size: auto;
+                box-sizing: border-box;
+                color: rgb(221, 221, 221);
+                font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 28px;
+                overflow-x: auto;
+                overflow-y: auto;
+                position: relative;
+                text-rendering: optimizelegibility;
+                word-break: break-word; 
+                code {
+                  background-attachment: scroll;
+                  border-radius: 5px;
+                  background-clip: border-box;
+                  background-color: rgb(17, 17, 17);
+                  background-image: none;
+                  background-origin: padding-box;
+                  background-position-x: 0%;
+                  background-position-y: 0%;
+                  background-repeat: repeat;
+                  background-size: auto;
+                  border-bottom-left-radius: 2px;
+                  border-bottom-right-radius: 2px;
+                  border-top-left-radius: 2px;
+                  border-top-right-radius: 2px;
+                  box-sizing: border-box;
+                  color: rgb(221, 221, 221);
+                  display: block;
+                  font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+                  font-size: 12px;
+                  font-weight: 400;
+                  line-height: 21px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-x: auto;
+                  padding-bottom: 15px;
+                  padding-left: 12px;
+                  padding-right: 12px;
+                  padding-top: 15px;
+                  text-rendering: optimizelegibility;
+                  word-break: normal;
+                }
+              }
+              code {
+                background-color: rgb(17, 17, 17);
+                border-bottom-left-radius: 2px;
+                border-bottom-right-radius: 2px;
+                border-top-left-radius: 2px;
+                border-top-right-radius: 2px;
+                box-sizing: border-box;
+                color: rgb(255, 80, 44);
+                font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+                font-size: 13.92px;
+                font-weight: 400;
+                line-height: 24.3667px;
+                list-style-image: none;
+                list-style-position: outside;
+                list-style-type: disc;
+                overflow-x: auto;
+                padding-bottom: 0.9048px;
+                padding-left: 5.568px;
+                padding-right: 5.568px;
+                padding-top: 0.9048px;
+                text-rendering: optimizelegibility;
+                word-break: break-word;
+              }
+              h1,h2,h3,h4,h5,h6{
+                line-height: 1.5;
+                margin-top: 35px;
+                margin-bottom: 10px;
+                border-bottom: 1px solid white;
+              }
+
+        }
+        
+        
+    }
+}

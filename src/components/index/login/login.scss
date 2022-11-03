@@ -1,0 +1,119 @@
+#login-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.3);
+    font-family: 'Courier New', Courier, monospace;
+    form{
+        position: absolute;
+        width: 60%;
+        height: 40%;
+        left: 50%;
+        top: 10%;
+        transform: translate(-50%);
+        color: white;
+        .remember-logUp{
+            position: absolute;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            top: 220px;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%);
+            input{
+                margin-left: 5px;
+                flex-basis: content;
+            }
+            i::after{
+                font-family: 'Courier New', Courier, monospace;
+                content: ' 注册';
+                font-size: 18px;
+                color: white;
+            }
+            i{
+                color: rgb(218, 68, 193);
+                font-size: 18px;
+            }
+        }
+        .useName{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 50px;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%);
+            i{
+                margin-right:5px;
+                color: rgb(233, 20, 20);
+            }
+            input{
+                width: 250px;
+                height: 25px;
+                font-size: 17px;
+                margin-left: 10px;
+                outline: none;
+                border: none;
+                color: white;
+                border-bottom: 1px solid white;
+                background-color: rgba($color: #f1f1f1, $alpha: 0);
+                text-align: center;
+            }
+        }
+        .passWord{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 150px;
+            left: 50%;
+            width: 100%;
+            transform: translate(-50%);
+            i{
+                margin-right:5px;
+                font-size: 20px;
+                color: rgb(0, 195, 255);
+            }
+            input{
+                width: 250px;
+                height: 25px;
+                font-size: 17px;
+                margin-left: 10px;
+                outline: none;
+                border: none;
+                color: white;
+                border-bottom: 1px solid white;
+                background-color: rgba($color: #f1f1f1, $alpha: 0);
+                text-align: center;
+            }
+            
+        }
+        button:hover{
+            transition: all .5s linear;
+            color: rgb(218, 231, 27);
+            text-shadow: 2px 2px 10px rgb(218, 231, 27);
+        }
+        button{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 300px;
+            left: 50%;
+            width: 150px;
+            font-size: 30px;
+            transform: translate(-50%);
+            background-color: rgba(white,0);
+            border: none;
+            color: rgb(115, 228, 115);
+            text-shadow: 2px 2px 10px rgb(115, 228, 115);
+            transition: all .5s linear;
+            i{
+                font-size: 50px;
+            }
+        }
+    }
+    
+}

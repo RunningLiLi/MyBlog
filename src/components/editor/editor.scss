@@ -1,0 +1,333 @@
+#editor-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(17, 17, 17);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+  main {
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    height: calc(100% - 70px);
+    .editor {
+      position: absolute;
+      box-sizing: border-box;
+      resize: none;
+      padding: 20px;
+      white-space: pre-wrap;
+      border: none;
+      color: white;
+      font-size: 15px;
+      height: 100%;
+      width: 50%;
+      outline: none;
+      background-color: rgb(36, 36, 36);
+
+      border-right: 1px solid rgb(104, 104, 104);
+    }
+    .preview {
+      position: absolute;
+      box-sizing: border-box;
+      padding: 20px;
+      right: 0;
+      height: 60%;
+      width: 50%;
+      background-color: rgb(36, 36, 36);
+      overflow-y: scroll;
+      overflow-x: hidden;
+      color: white;
+      box-sizing: border-box;
+      padding: 10px 10px 30px 30px;
+      word-break: break-word;
+      ul {
+        box-sizing: border-box;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+          Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        padding-left: 28px;
+        text-rendering: optimizelegibility;
+        word-break: break-word;
+      }
+      ol {
+        box-sizing: border-box;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica,
+          Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        padding-left: 28px;
+        text-rendering: optimizelegibility;
+        word-break: break-word;
+      }
+      pre {
+        background-attachment: scroll;
+        border-radius: 5px;
+        background-clip: border-box;
+        background-color: rgb(17, 17, 17);
+        background-image: none;
+        background-origin: padding-box;
+        background-position-x: 0%;
+        background-position-y: 0%;
+        background-repeat: repeat;
+        background-size: auto;
+        box-sizing: border-box;
+        color: rgb(221, 221, 221);
+        font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 28px;
+        overflow-x: auto;
+        overflow-y: auto;
+        position: relative;
+        text-rendering: optimizelegibility;
+        word-break: break-word; 
+        code {
+          background-attachment: scroll;
+          border-radius: 5px;
+          background-clip: border-box;
+          background-color: rgb(17, 17, 17);
+          background-image: none;
+          background-origin: padding-box;
+          background-position-x: 0%;
+          background-position-y: 0%;
+          background-repeat: repeat;
+          background-size: auto;
+          border-bottom-left-radius: 2px;
+          border-bottom-right-radius: 2px;
+          border-top-left-radius: 2px;
+          border-top-right-radius: 2px;
+          box-sizing: border-box;
+          color: rgb(221, 221, 221);
+          display: block;
+          font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+          font-size: 12px;
+          font-weight: 400;
+          line-height: 21px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-x: auto;
+          padding-bottom: 15px;
+          padding-left: 12px;
+          padding-right: 12px;
+          padding-top: 15px;
+          text-rendering: optimizelegibility;
+          word-break: normal;
+        }
+      }
+      code {
+        background-color: rgb(17, 17, 17);
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        box-sizing: border-box;
+        color: rgb(255, 80, 44);
+        font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+        font-size: 13.92px;
+        font-weight: 400;
+        line-height: 24.3667px;
+        list-style-image: none;
+        list-style-position: outside;
+        list-style-type: disc;
+        overflow-x: auto;
+        padding-bottom: 0.9048px;
+        padding-left: 5.568px;
+        padding-right: 5.568px;
+        padding-top: 0.9048px;
+        text-rendering: optimizelegibility;
+        word-break: break-word;
+      }
+      h1,h2,h3,h4,h5,h6{
+        line-height: 1.5;
+        margin-top: 35px;
+        margin-bottom: 10px;
+      }
+    }
+    .mainPoints {
+      position: absolute;
+      box-sizing: border-box;
+      padding: 20px 25px 20px 25px;
+      right: 0;
+      bottom: 0;
+      height: 40%;
+      width: 50%;
+      border-top: 1px solid rgb(104, 104, 104);
+      background-color: rgb(36, 36, 36);
+      ol {
+        position: absolute;
+        width: 90%;
+        top: 60px;
+        height: calc(100% - 60px);
+        overflow-y: scroll;
+        overflow-x: visible;
+        li {
+          margin-left: 30px;
+          font-size: 16px;
+          color: white;
+          height: 20px;
+          width: 100%;
+          outline: none;
+          margin-top: 10px;
+          input {
+            width: 100%;
+            color: white;
+            font-size: 16px;
+            background-color: rgb(36, 36, 36);
+            border: none;
+            outline: none;
+          }
+        }
+      }
+      div {
+        position: absolute;
+        height: 30px;
+        width: 100%;
+        font-size: 20px;
+        color: rgb(161, 161, 161);
+        .icon-xinzeng {
+          position: absolute;
+          left: 50px;
+          top: 5px;
+          font-size: 20px;
+          color: rgb(164, 214, 226);
+          cursor: pointer;
+        }
+        span {
+          position: absolute;
+          top: 2px;
+          left: 80px;
+          font-size: 20px;
+          color: rgb(164, 214, 226);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  header {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(17, 17, 17);
+    .keys {
+      position: absolute;
+      width: 60px;
+      height: 30px;
+      top: 20px;
+      left: calc(40% + 180px);
+      ul {
+        position: absolute;
+        display: flex;
+        top: 5px;
+        left: 70px;
+        height: 20px;
+        color: white;
+        list-style: none;
+        min-width: 50px;
+        li {
+          line-height: 15px;
+          padding: 2px 8px 2px 8px;
+          border-radius: 5px;
+          color: rgb(80, 173, 228);
+          height: 20px;
+          margin-left: 5px;
+          border: 1px solid white;
+          white-space: nowrap;
+        }
+      }
+      input {
+        position: absolute;
+        width: 60px;
+        height: 30px;
+        outline: none;
+        border: none;
+        background-color: rgb(17, 17, 17);
+        border-bottom: 1px solid white;
+        color: rgb(80, 173, 228);
+        font-size: 15px;
+      }
+    }
+    .classes {
+      position: absolute;
+      width: 150px;
+      height: 30px;
+      top: 20px;
+      left: calc(40% + 20px);
+      .default {
+        position: absolute;
+        display: flex;
+        justify-content: space-evenly;
+        box-sizing: border-box;
+        padding: 10px;
+        flex-wrap: wrap;
+        list-style: none;
+        z-index: 100;
+        top: 30px;
+        width: 100%;
+        min-height: 50px;
+        background-color: rgb(17, 17, 17);
+        border-radius: 0px 0px 5px 5px;
+        li {
+          margin-top: 10px;
+          box-sizing: border-box;
+          height: 30px;
+          font-size: 15px;
+          color: rgb(212, 212, 212);
+          border: 1px solid white;
+          border-radius: 5px;
+          padding:2px 8px 2px 8px;
+          cursor: pointer;
+          min-width: 20px;
+        }
+        li:hover {
+          background-color: rgb(173, 173, 173);
+        }
+      }
+      input {
+        position: absolute;
+        top: 0px;
+        left: 0;
+        outline: none;
+        border: none;
+        border-bottom: 1px solid white;
+        background-color: rgb(17, 17, 17);
+        width: 100%;
+        height: 30px;
+        color: rgb(238, 26, 26);
+        font-size: 15px;
+      }
+    }
+    .icon-chenggong{
+      color: greenyellow;
+      font-size: 35px;
+    }
+    i {
+      position: absolute;
+      right: 10px;
+      height: 30px;
+      width: 50px;
+      top: 15px;
+      color: white;
+      font-size: 30px;
+    }
+    .title {
+      position: absolute;
+      left: 10px;
+      outline: none;
+      border: none;
+      border-bottom: 1px solid white;
+      top: 10px;
+      background-color: rgb(17, 17, 17);
+      width: 40%;
+      height: 40px;
+      color: white;
+      font-size: 25px;
+    }
+  }
+}
