@@ -1,4 +1,5 @@
 import { useEffect, useReducer, useRef, useState } from "react";
+import request from "../../../utility/request.ts";
 import useFetch from "../../../hooks/useFetch";
 import useInput from "../../../hooks/useInput";
 import Prompt from "../../../commonComponents/prompt";
@@ -25,11 +26,11 @@ export default function Cards() {
   const [cardId,setCardId]=useState("");
   const [anchor,setAnchor]=useState(null);
   const { data=[], loading, err } = useFetch(
-    "http://localhost:3000/cards/getCards"
+    "/cards/getCards"
   );
-  useEffect(() => {
-    console.log(data, loading, err);
-  }, [data]);
+  // useEffect(() => {
+  //   console.log(data, loading, err);
+  // }, [data]);
   function showAnswer(e) {
     let element = e.target;
     while (!element.classList.contains("card")) {
@@ -52,7 +53,7 @@ export default function Cards() {
   }
   function removeCard(e,id){
     handleClose(e);
-    fetch("http://localhost:3000/cards/removeCard/"+id);
+    request("/cards/removeCard/"+id);
   }
   //输入框
   const [open, setOpen] = useReducer((pre) => !pre, false);
@@ -87,7 +88,7 @@ export default function Cards() {
       keys,
     };
     if (question.value && answers[0] && keys[0]) {
-      fetch("http://localhost:3000/cards/addCard", {
+      request("/cards/addCard", {
         method: "post",
         headers: {
           "Content-Type": "application/json;charset=utf-8",

@@ -2,16 +2,17 @@ import './note.scss'
 import '../../index.css'
 import Prompt from '../../../../commonComponents/prompt';
 import { useState,useRef } from 'react';
+import request from '../../../../utility/request.ts';
+import config from '../../../../config';
 export default function Note(props){
     const {title,classes,keys,date,cover,mainPoints,id}=props;
     const [mes,sendMes]=useState('')
     const note=useRef()
     function deleteArticle(e){
         e.stopPropagation()
-        fetch('http://localhost:3000/articles/deleteArticleById/'+id,{method:'get',credentials:'include'})
-        .then(res=>res.json())
+        request('/articles/deleteArticleById/'+id,{method:'get',credentials:'include'})
         .then(res=>{
-            if(res.status==200){
+            if(res.status===200){
                 sendMes(res.mes+Math.random())
                 note.current.hidden=true
             }else{
@@ -22,7 +23,7 @@ export default function Note(props){
       
     }
     function goArticleDetail(){
-      window.open('about:blank').location.href="http://localhost:3001/#/article?id="+id
+      window.open('about:blank').location.href=config.host+"/#/article?id="+id
     }
     return(
         <>

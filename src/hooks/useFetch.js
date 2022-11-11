@@ -1,19 +1,20 @@
 import {useState,useEffect} from 'react'
-export default function useFetch(url){
+import request from '../utility/request.ts'
+export default function useFetch(path){
     const [data,setData]=useState()
     const [err,setErr]=useState()
     const [loading,setLoading]=useState(true)
     useEffect(()=>{
-        if(!url)return
-        fetch(url)
-        .then(res=>res.json())
+        if(!path)return
+        request(path)
         .then(setData)
         .then(()=>setLoading(false))
         .catch(setErr)
-    },[url])
+    },[path])
     return{
         data,
         loading,
         err
     }
 }
+

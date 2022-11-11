@@ -14,12 +14,12 @@ export default()=>{
         const id=setInterval(()=>{
             if(length===7)return;
             changeLength(pre=>++pre)
-        },200)
+        },300)
         const id2=setInterval(()=>{
             if(length===7){
                 setFlash(flash?'':'_')
             }
-        },400)
+        },500)
         return()=>{
             clearInterval(id)
             clearInterval(id2)

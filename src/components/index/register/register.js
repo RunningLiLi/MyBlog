@@ -3,6 +3,7 @@ import { useState } from "react";
 import Prompt from "../../../commonComponents/prompt";
 import useInput from "../../../hooks/useInput";
 import { useNavigate } from "react-router";
+import request from "../../../utility/request.ts";
 export default () => {
   const [verificationCode, setVerificationCode] = useState(
     Array.apply(null, Array("", "", "", ""))
@@ -21,7 +22,7 @@ export default () => {
   function sendVerificationCode(e) {
     e.preventDefault();
     if (emailObj.value && emailObj.value.includes("@")) {
-      fetch("http://localhost:3000/users/sendverificationCode", {
+      request("/users/sendverificationCode", {
         method: "post",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -30,7 +31,6 @@ export default () => {
           email: emailObj.value,
         }),
       })
-        .then((res) => res.json())
         .then((res)=>{sendMes(res.mes + Math.random());});
     } else {
       sendMes("请填入正确的邮箱" + Math.random());
@@ -44,7 +44,7 @@ export default () => {
       verificationCode &&
       emailObj.value
     ) {
-      fetch("http://49.235.113.141:3000/users/signup", {
+      request("/users/signup", {
         method: "post",
         headers: {
           "Content-Type": "application/json;charset=utf-8",
@@ -56,9 +56,8 @@ export default () => {
           email: emailObj.value,
         }),
       })
-        .then((res) => res.json())
         .then((res)=>{
-          if(res.status==200){
+          if(res.status===200){
             setTimeout(() => {
               nav('../login')
             }, 500);

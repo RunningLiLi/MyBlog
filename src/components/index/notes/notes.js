@@ -5,8 +5,9 @@ import Fetch from '../../../commonComponents/fetch'
 import { useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
 import useInput from '../../../hooks/useInput'
+import request from '../../../utility/request.ts'
 export default function Notes(){
-    const nav= useNavigate()
+    // const nav= useNavigate()
     const [classes,setClasses]=useState([])
     const [typeAt]=useInput('All')
     const [basisAt]=useInput('Date')
@@ -24,8 +25,7 @@ export default function Notes(){
         :next[basisAt.value.toLowerCase()]-pre[basisAt.value.toLowerCase()]
     }
     useEffect(()=>{
-        fetch('http://localhost:3000/articles/getAllClasses')
-        .then(res=>res.json())
+        request('/articles/getAllClasses')
         .then(res=>{
             res.map(v=>{
                 if(!classes.includes(v.classes)){
@@ -37,7 +37,7 @@ export default function Notes(){
     },[])
     
     return (
-        <Fetch renderSuccess={renderSuccess} url={`http://localhost:3000/articles/getAllArticles/${typeAt.value}`}/>
+        <Fetch renderSuccess={renderSuccess} url={`/articles/getAllArticles/${typeAt.value}`}/>
     )
     function renderSuccess(data) {
         return(

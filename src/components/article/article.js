@@ -12,7 +12,7 @@ export default function Article(){
 
 
     return(
-        <Fetch renderSuccess={renderSuccess} url={`http://localhost:3000/articles/getArticleById${location.search}`}></Fetch>
+        <Fetch renderSuccess={renderSuccess} url={`/articles/getArticleById${location.search}`}></Fetch>
     )
     function renderSuccess(data){
         return(

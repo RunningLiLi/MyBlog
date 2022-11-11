@@ -3,6 +3,7 @@ import '../../index/index.css'
 import Prompt from "../../../commonComponents/prompt";
 import { useRef,useState } from "react";
 import { useNavigate } from "react-router";
+import request from "../../../utility/request.ts";
 export default function Login() {
   const form=useRef()
   const nav=useNavigate();
@@ -12,11 +13,11 @@ export default function Login() {
   }
   function login(e){
     e.preventDefault()
-    fetch('http://localhost:3000/users/login',{
+    request('/users/login',{
       method:'post',
       credentials:'include',
       body:new FormData(form.current)
-    }).then(res=>res.json())
+    })
     .then(res=>sendMes(res.mes+Math.random()))
   }
   return (

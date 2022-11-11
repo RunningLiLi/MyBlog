@@ -3,6 +3,7 @@ import useInput from "../../hooks/useInput";
 import Prompt from "../../commonComponents/prompt";
 import { micromark } from "micromark";
 import { useEffect, useReducer, useRef, useState } from "react";
+import request from "../../utility/request.ts";
 export default function Editor() {
   const [points, addPoint] = useReducer(
     (pre, num) => (pre + num >= 0 ? pre + num : 0),
@@ -19,8 +20,7 @@ export default function Editor() {
   const [classes, getClasses] = useState([]);
   const [isSubmit, changeSubmit] = useState(false);
   useEffect(() => {
-    fetch("http://localhost:3000/articles/getAllClasses")
-      .then((res) => res.json())
+    request("/articles/getAllClasses")
       .then((res) => {
         let arr = [];
         res.map((v) => {
@@ -71,12 +71,11 @@ export default function Editor() {
       data.append("body", body);
       data.append("title", title);
       pointsValue.map((v) => data.append("mainPoints", v));
-      fetch("http://localhost:3000/articles/upload", {
+      request("/articles/upload", {
         method: "post",
         body: data,
         credentials: "include",
       })
-        .then((res) => res.json())
         .then((res) => sendMes(res.mes + Math.random()))
         .then(() => {
           e.target.classList.add("icon-chenggong");
