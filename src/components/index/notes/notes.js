@@ -2,10 +2,11 @@ import './notes.scss'
 import Note from './note/note.js'
 import '../index.css'
 import Fetch from '../../../commonComponents/fetch'
-import { useNavigate } from 'react-router'
+// import { useNavigate } from 'react-router'
 import { useEffect, useState } from 'react'
 import useInput from '../../../hooks/useInput'
 import request from '../../../utility/request.ts'
+import baseData from "../../../config"
 export default function Notes(){
     // const nav= useNavigate()
     const [classes,setClasses]=useState([])
@@ -13,7 +14,7 @@ export default function Notes(){
     const [basisAt]=useInput('Date')
     const [isAscending,changeAs]=useState(false)
     function goEdit(){
-        window.open('about:blank').location.href="http://localhost:3001/#/editor"
+        window.open('about:blank').location.href=baseData.host+"/#/editor"
     } 
     function changeOrder(e){
         e.target.classList.toggle('icon-shengxu')

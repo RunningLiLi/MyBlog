@@ -18,7 +18,12 @@ export default function Login() {
       credentials:'include',
       body:new FormData(form.current)
     })
-    .then(res=>sendMes(res.mes+Math.random()))
+    .then(res=>{
+      sendMes(res.mes+Math.random());
+      setTimeout(()=>{
+        nav('../notes')
+      },500)
+    })
   }
   return (
     <>

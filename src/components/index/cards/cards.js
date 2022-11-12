@@ -18,19 +18,23 @@ import {
   DialogTitle,
   Fab,
   Menu,
-  MenuItem
+  MenuItem,
+  cardMediaClasses,
 } from "@mui/material";
 export default function Cards() {
   //主体
-  const [cards] = useState([[], [], []]);
-  const [cardId,setCardId]=useState("");
-  const [anchor,setAnchor]=useState(null);
-  const { data=[], loading, err } = useFetch(
-    "/cards/getCards"
-  );
-  // useEffect(() => {
-  //   console.log(data, loading, err);
-  // }, [data]);
+  const [mes, sendMes] = useState("");
+  const [cards, pushCards] = useState([[], [], []]);
+  const [cardId, setCardId] = useState(""); //得到正确的id
+  const [anchor, setAnchor] = useState(null);
+  const [index, setIndex] = useState(0); //选择要删除的序号
+  const { data = [], loading, err } = useFetch("/cards/getCards");
+  useEffect(() => {
+    data.map((item, key) => {
+      cards[key % 3].push(item);
+    });
+    pushCards([...cards]);
+  }, [data]);
   function showAnswer(e) {
     let element = e.target;
     while (!element.classList.contains("card")) {
@@ -38,22 +42,31 @@ export default function Cards() {
     }
     element.classList.toggle("card-show");
   }
-  function setDone(e) {
-    e.target.classList.toggle("done");
+  function setDone(e, id, target) {
+    request(`/cards/updateCard/${id}/${target}`).then(
+      () => {
+        e.target.classList.toggle("done");
+      },
+      () => {
+        sendMes("更新失败" + Math.random());
+      }
+    );
     e.stopPropagation();
   }
-  function openMenu(e,id){
+  function openMenu(e, id, index) {
     e.stopPropagation();
     setAnchor(e.currentTarget);
-    setCardId(id)
+    setCardId(id);
+    setIndex(index);
   }
-  function handleClose(e){
+  function handleClose(e) {
     e.stopPropagation();
-    setAnchor(null)
+    setAnchor(null);
   }
-  function removeCard(e,id){
+  function removeCard(e) {
     handleClose(e);
-    request("/cards/removeCard/"+id);
+    request("/cards/removeCard/" + cardId);
+    document.querySelector(`[index="${cardId}"]`).remove();
   }
   //输入框
   const [open, setOpen] = useReducer((pre) => !pre, false);
@@ -80,7 +93,6 @@ export default function Cards() {
   }
 
   //上传
-  const [mes, sendMes] = useState("");
   function submit() {
     const bodyData = {
       question: question.value,
@@ -94,7 +106,9 @@ export default function Cards() {
           "Content-Type": "application/json;charset=utf-8",
         },
         body: JSON.stringify(bodyData),
-      });
+      })
+        .then(setOpen)
+        .then(() => window.location.reload());
     } else {
       sendMes("信息不完整" + Math.random());
     }
@@ -176,39 +190,53 @@ export default function Cards() {
         添加
       </Button>
       <div id="cards-container">
-        <div className="column-container">
-          {data.map(({id,question,keys,answers}) => (
-            <div key={id} className="card"  onClick={showAnswer}>
-              <div className="question-container">
-                <i className="iconfont icon-chenggong" onClick={setDone}></i>
-                <div className="question">{question}</div>
-                <ul className="keys">
-                  {
-                    keys.map((str,k)=><li key={k}>{str}</li>)
-                  }
-                </ul>
-                <div className="more-container">
-                    <i  onClick={(e)=>openMenu(e,id)} className="iconfont icon-gengduo"></i>
-                    <Menu anchorEl={anchor} open={Boolean(anchor)} onClose={handleClose}>
-                      <MenuItem onClick={(e)=>removeCard(e,cardId)}>删除</MenuItem>
+        {cards.map((cardColumn,key) => (
+          <div key={key} className="column-container">
+            {cardColumn.map(({ id, question, keys, answers, done }) => (
+              <div key={id} index={id} className="card" onClick={showAnswer}>
+                <div className="question-container">
+                  <i
+                    className={
+                      done
+                        ? "iconfont icon-chenggong done"
+                        : "iconfont icon-chenggong"
+                    }
+                    onClick={(e) => setDone(e, id, !done)}
+                  ></i>
+                  <div className="question">{question}</div>
+                  <ul className="keys">
+                    {keys.map((str, k) =>
+                      str ? <li key={k}>{str}</li> : null
+                    )}
+                  </ul>
+                  <div className="more-container">
+                    <i
+                      onClick={(e) => openMenu(e, id, index)}
+                      className="iconfont icon-gengduo"
+                    ></i>
+                    <Menu
+                      anchorEl={anchor}
+                      open={Boolean(anchor)}
+                      onClose={handleClose}
+                    >
+                      <MenuItem onClick={(e) => removeCard(e)}>删除</MenuItem>
                       <MenuItem>修改</MenuItem>
                     </Menu>
+                  </div>
+                </div>
+                <div className="answer-container">
+                  <div className="answer">
+                    <ol>
+                      {answers.map((v, k) => (
+                        <li key={k}>{v}</li>
+                      ))}
+                    </ol>
+                  </div>
                 </div>
               </div>
-              <div className="answer-container">
-                <div className="answer">
-                  <ol>
-                    {answers.map((v, k) => (
-                      <li key={k}>{v}</li>
-                    ))}
-                  </ol>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="column-container"></div>
-        <div className="column-container"></div>
+            ))}
+          </div>
+        ))}
       </div>
     </>
   );
