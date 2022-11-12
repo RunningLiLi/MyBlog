@@ -7,7 +7,6 @@
   overflow-x: hidden;
   background-color: rgba($color: #000000, $alpha: 0.2);
   scrollbar-width: none;
-  font-family: "Courier New", Courier, monospace;
   .column-container {
     display: flex;
     flex-direction: column;
@@ -123,13 +122,13 @@
         }
         .keys {
           display: flex;
-          flex-direction: column;
+          
           list-style: none;
           margin-top: 20px;
           justify-content: space-evenly;
           flex-wrap: wrap;
           li {
-              color: rgb(59, 179, 235);
+              color:rgb(214, 213, 213);
           }
         }
       }

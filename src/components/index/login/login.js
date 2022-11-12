@@ -20,9 +20,11 @@ export default function Login() {
     })
     .then(res=>{
       sendMes(res.mes+Math.random());
-      setTimeout(()=>{
-        nav('../notes')
-      },500)
+      if(res.status===200){
+        setTimeout(()=>{
+          nav('../notes')
+        },500)
+      }
     })
   }
   return (

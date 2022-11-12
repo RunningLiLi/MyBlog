@@ -65,8 +65,16 @@ export default function Cards() {
   }
   function removeCard(e) {
     handleClose(e);
-    request("/cards/removeCard/" + cardId);
-    document.querySelector(`[index="${cardId}"]`).remove();
+    request("/cards/removeCard/" + cardId,{method:'get',credentials:'include'})
+    .then((res)=>{
+      if(res.status===300){
+        sendMes(res.mes+Math.random())
+      }else{
+        sendMes(res.mes+Math.random())
+        document.querySelector(`[index="${cardId}"]`).remove();
+      }
+    })
+    
   }
   //输入框
   const [open, setOpen] = useReducer((pre) => !pre, false);
@@ -102,6 +110,7 @@ export default function Cards() {
     if (question.value && answers[0] && keys[0]) {
       request("/cards/addCard", {
         method: "post",
+        credentials:'include',
         headers: {
           "Content-Type": "application/json;charset=utf-8",
         },
@@ -116,7 +125,6 @@ export default function Cards() {
   return (
     <>
       <Dialog open={open}>
-        <Prompt mes={mes} delay={1500}></Prompt>
         <DialogTitle>添加一个卡片</DialogTitle>
 
         <DialogContent dividers>
@@ -124,7 +132,7 @@ export default function Cards() {
             autoFocus
             margin="dense"
             id="name"
-            label="Question"
+            label="问题"
             fullWidth
             variant="standard"
             style={{ marginBottom: 30 }}
@@ -138,7 +146,7 @@ export default function Cards() {
               size="small"
               margin="dense"
               id="name"
-              label="Key1"
+              label={"关键字"+(k+1)}
               variant="outlined"
               style={{ width: "33.3%" }}
             />
@@ -153,7 +161,7 @@ export default function Cards() {
               size="medium"
               margin="dense"
               id="name"
-              label={`Answer-${k + 1}`}
+              label={`答案-${k + 1}`}
               fullWidth
               variant="standard"
             />
@@ -189,6 +197,7 @@ export default function Cards() {
       >
         添加
       </Button>
+      <Prompt mes={mes} delay={1500}></Prompt>
       <div id="cards-container">
         {cards.map((cardColumn,key) => (
           <div key={key} className="column-container">
@@ -206,7 +215,7 @@ export default function Cards() {
                   <div className="question">{question}</div>
                   <ul className="keys">
                     {keys.map((str, k) =>
-                      str ? <li key={k}>{str}</li> : null
+                      str ? <li key={k}>{str+(k!==keys.length-1?"|":"")}</li> : null
                     )}
                   </ul>
                   <div className="more-container">
