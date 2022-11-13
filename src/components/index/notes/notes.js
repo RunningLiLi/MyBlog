@@ -33,7 +33,7 @@ export default function Notes(){
                     classes.push(v.classes)
                 }
             })
-            setClasses(classes)
+            setClasses([...classes])
         })
     },[])
     
@@ -48,7 +48,7 @@ export default function Notes(){
                     <i className='iconfont icon-fenlei'></i>
                     <select className='classes' {...typeAt}>
                         <option>All</option>
-                        {classes.map((v,k)=><option key={k}>{v}</option>)}
+                        {classes.map((v,k)=>v?<option key={k}>{v}</option>:"")}
                     </select>
                     <i className='iconfont icon-shengxu' onClick={changeOrder}></i>
                     <select className='sort' {...basisAt}>

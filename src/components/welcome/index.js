@@ -29,7 +29,7 @@ export default function Welcome(){
             <h2 style={{opacity}} className='tip'>点击任意位置跳转</h2>
             <div className='intro'>
                 <img src={require('../../resource/favicon.png')} alt='logo'></img>
-                <h1>Running-LiLi</h1>
+                <h1>𝚁𝚞𝚗𝚗𝚒𝚗𝚐𝙻𝚒𝙻𝙸</h1>
                 <h3>建站时长:{hour}时{minute}分{second}秒</h3>
                 <h3>建站日期:2022-9-20 11:30</h3>
                 <h3>访问数:33</h3>

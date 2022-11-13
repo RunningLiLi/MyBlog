@@ -20,16 +20,15 @@ export default function Editor() {
   const [classes, getClasses] = useState([]);
   const [isSubmit, changeSubmit] = useState(false);
   useEffect(() => {
-    request("/articles/getAllClasses")
-      .then((res) => {
-        let arr = [];
-        res.map((v) => {
-          if (!arr.includes(v.classes)) {
-            arr.push(v.classes);
-          }
-        });
-        getClasses(arr);
+    request("/articles/getAllClasses").then((res) => {
+      let arr = [];
+      res.map((v) => {
+        if (!arr.includes(v.classes)) {
+          arr.push(v.classes);
+        }
       });
+      getClasses(arr);
+    });
   }, []);
   function changePoint(e, index) {
     pointsValue[index] = e.target.value;
@@ -76,14 +75,16 @@ export default function Editor() {
         body: data,
         credentials: "include",
       })
-        .then((res) => sendMes(res.mes + Math.random()))
-        .then(() => {
-          e.target.classList.add("icon-chenggong");
-          e.target.classList.toggle("icon-shangchuan");
-          changeSubmit(!isSubmit)
-        });
-    }else{
-        sendMes('已发布' + Math.random())
+        .then((res) =>{
+          sendMes(res.mes + Math.random())
+          if (res.status === 200) {
+            e.target.classList.add("icon-chenggong");
+            e.target.classList.toggle("icon-shangchuan");
+            changeSubmit(!isSubmit);
+          }
+        })
+    } else {
+      sendMes("已发布" + Math.random());
     }
   }
   return (
@@ -142,7 +143,6 @@ export default function Editor() {
         <textarea
           {...bodyAttributes}
           className="editor"
-          contentEditable='true'
           placeholder="在这里输入文章主体..."
         ></textarea>
         <div

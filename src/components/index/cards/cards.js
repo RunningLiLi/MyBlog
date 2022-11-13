@@ -43,9 +43,11 @@ export default function Cards() {
     element.classList.toggle("card-show");
   }
   function setDone(e, id, target) {
-    request(`/cards/updateCard/${id}/${target}`).then(
-      () => {
+    request(`/cards/updateCard/${id}/${target}`,{method:'get',credentials:'include'}).then(
+      (res) => {
+        if(res.status===200)
         e.target.classList.toggle("done");
+        sendMes(res.mes + Math.random());
       },
       () => {
         sendMes("更新失败" + Math.random());
@@ -116,17 +118,22 @@ export default function Cards() {
         },
         body: JSON.stringify(bodyData),
       })
-        .then(setOpen)
-        .then(() => window.location.reload());
+        .then(res=>{
+          setOpen()
+          if(res.status===200){
+            window.location.reload()
+          }else{
+            alert("请先登录")
+          } 
+        })
     } else {
-      sendMes("信息不完整" + Math.random());
+      alert("信息不完整");
     }
   }
   return (
     <>
       <Dialog open={open}>
         <DialogTitle>添加一个卡片</DialogTitle>
-
         <DialogContent dividers>
           <TextField
             autoFocus
@@ -214,8 +221,8 @@ export default function Cards() {
                   ></i>
                   <div className="question">{question}</div>
                   <ul className="keys">
-                    {keys.map((str, k) =>
-                      str ? <li key={k}>{str+(k!==keys.length-1?"|":"")}</li> : null
+                    {keys.map((str, k,arr) =>
+                      str ? <li key={k}>{str+(arr[k+1]?"|":"")}</li> : null
                     )}
                   </ul>
                   <div className="more-container">

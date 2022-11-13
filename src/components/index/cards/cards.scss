@@ -1,3 +1,4 @@
+#cards-container::-webkit-scrollbar {display: none; /* Chrome Safari */}
 #cards-container {
   position: relative;
   display: flex;
